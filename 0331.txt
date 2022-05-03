@@ -1,0 +1,60 @@
+python manage.py runserver
+bit.ly/lbt-pds
+	mysite.zip
+
+static
+
+#settings.py
+
+STATIC_URL = 'static/'
+
+# 기본적인 static 디렉토리 검색
+앱디렉토리/static/앱이름
+
+# 기본 경로 이외 다른 디렉토리
+STATICFILES_DIR
+
+사용자 관련
+공유기능
+
+common
+python manage.py startapp common
+1. settings.py 에서 앱등록
+'commons.apps.CommonConfig'
+2. urls.py 등록
+
+
+#mysql 모듈 설치
+conda install -c conda-forge mysqlclient
+pip install mysqlclient(콘다환경에서는 쓰지 않는게 좋음)
+
+#settings.py
+- mysql 설정
+
+# 데이터베이스, 사용자 설정
+create database mysite charset='utf8';
+create user 'webdb'@'localhost'
+	identified by 'webdb';
+grant all privileges on mysite.*
+	to 'webdb'@'localhost';
+
+#settings.py
+-mysql 설정
+DATABASES 항목에 MySQL 설정
+
+# 데이터 베이스 초기화
+python manage.py makemigrations
+python manage.py migrate
+
+# 슈퍼유저 생성
+python manage.py createsuperuser
+
+목록화면
+작성화면
+조회화면
+삭제화면
+
+이미지 첨부
+conda install -c conda-forge pillow
+
+python manage.py startapp board

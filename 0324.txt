@@ -1,0 +1,158 @@
+CSS3 주요 속성 : 위치 속성 
+
+absolute 좌표계 설정 팁 : 자손의 position 속성에 absolute 키워드를 적용하려면 조상 요소에 height 속성을 부여
+		        자손의 position 속성에 absolute 키워드를 적용하려면 조상의 position 속성에 relative 키워드를 적용
+
+absolute 좌표계
+- overflow 속성 : 내부의 요소가 조상의 범위를 벗어날 때 처리하는 방법을 지정
+	hidden : 조상 영역을 벗어나는 부분 감춤
+	scroll : 조상 영역을 벗어나는 부분 스크롤 처리
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+JavaScript : A Brief History
+- 넷스케이프가 클라이언트 측에서 사용할 목적으로 개발한 라이브스크립트에서 시작
+- 1995년 javascript로 명칭을 변경 후 발표
+- microsoft jscript 등 브라우저 개발사별 스크립트의 난립으로 호환성에 문제 발생
+- 1997년 넷스케이프가 javascript 스펙을 ecma에 제출, 첫 버전 ecma-262 발표
+- 현재 대부분 브라우저가 ecma-262를 기반으로 한 javascript 1.6, 1.7을 지원
+- 2015년 ecmascript edition 6(es6, es2015) 발표
+
+ECMAScript 2015(ES6)
+- JavaScript 출범 이후 최대의 변화
+- JavaScript가 가지고 있던 단점들을 극복하고자 하는 노력
+	블록 스코프 : let/const
+	컬렉션 : Map, Set, WeakMap, WeakSet 등
+	class
+	향상된 for loop
+	Promises
+	Template String
+	모듈화
+
+nodejs.org 들어가서 nodejs다운
+visual studio code 에서 새 터미널 창을 열어서 npm install -g nodemon 입력
+
+Javascript 엔진은 Console에 출력하기 위한 console 객체를 전역 객체로 포함하고 있다.
+console.info("정보 메시지");
+console.log("일반 로그 메시지");
+console.warn("경고 메시지");
+console.error("에러 메시지");
+
+세미콜론은 반드시 붙혀야 하는 것은 아니다.
+단, 두 문장 이상을 한 라인에 입력하고자 할 때는 세미콜론을 붙혀주어야 자바스크립트 엔진이 별도 문장임을 인지할 수 있다.
+Java와 마찬가지로 CamelCase가 기본
+객체지향X, 객체기반언어이다. 객체는 프로퍼티와 메소드로 이루어져 있다.
+객체의 속성, 메소드에 접근할 때는 .으로 접근
+
+let : 	mutable(변경 가능)
+	변수에 재 할당이 가능
+
+const : 	immutable(변경 불가)
+	변수에 재 할당이 불가 -> 상수로 사용 가능
+	재할당이 불가하므로 선언과 할당을 함께 해주어야 한다.
+
+var : 	ES6 이전, JavaScript 에서 사용하던 변수 할당을 위한 키워드
+
+
+변수 이름 명명 규칙 : 	알파벳(A-Z,a-z), 숫자(0-9), 밑줄(_), 달러($) 기호를 사용할 수 있음
+			숫자로 시작해서는 안됨
+
+
+변수의 데이터 타입은 선언 시 지정하는 것이 아니라 할당과 함께 결정된다.
+변수에 담긴 데이터의 타입을 확인하고자 하면 typeof 키워드 이용
+	let v = "This is String";
+	console.log("v is", typeof v);
+	v = 2018;
+	console.log("v is", typeof v);
+
+
+자바의 기본 데이터 타입은 number, string, boolean 3가지이다.
+
+
+숫자를 표현하거나 산술 연산을 하는 데 사용되는 데이터 타입
+- 기본적으로는 산술 연산(+,-,*,/ 등)이 가능
+
+- math 내장 객체를 이용하여 수학 함수를 이용한 결과값을 받을 때 활용
+  Math.round() : 반올림, Math.floor() : 버림
+
+
+자바스크립트는 변수 선언시 데이터타입을 지정하지 않음
+- 문자열 데이터로 숫자를 표현하는 경우(특히 외부 파라미터를 이용한 전송)가 많음 -> 데이터 형 변환이 필요한 경우 많음
+
+- parseInt(), parseFloat()를 이용하면 Number 형으로 변환 가능
+	console.log(parseInt("011")); // 11:
+	console.log(parseInt("011", 2)); // 3: 진법 변환
+	console.log(parseInt("123.456")); // 123: 정수 형태만 반환한다.
+	console.log(parseFloat("123.456")); // 123.456:
+
+- 숫자로 변환할 수 없는 형태의 문자열을 캐스팅할 경우, NaN(Not a Number)를 반환
+	console.log(parseFloat("a123.456")); // NaN
+
+- 수치형 데이터가 NaN인지 확인하려면 isNaN() 내장 객체 함수를 이용
+
+Infinity
+산술 연산 결과가 무한대임을 표시하는 자바스크립트의 표현식
+- 양의 무한대의 음의 무한대로 구분
+- 산술 결과 혹은 전달된 인자값이 유한한 형태를 가진
+
+String : 문자열을 표현하는데 사용되는 데이터 타입
+- Javascript의 문자열은 유니코드 문자들의 연결 구조이기도 하다.= 문자 하나하나가 연결되어 하나의 표현을 이루는 데이터
+- Property : length
+  consolt.log("Hello", length);
+- 자동 형변환 : Javascript에서는 String과 다른 타입들을 합칠 때, String으로 자동 변환된다.
+
+String 문자열 추출
+- charAt(index) : 문자열 내 특정 인덱스의 문자를 추출
+- substring(from, end) : 문자열 내의 from 인덱스부터 end 인덱스까지의 문자열을 추출
+- indexOf(searchString[, position]) : 문자열 내 position 인덱스로부터 searchString을 검색, 해당 인덱스를 반환(position 파라미터는 옵션)
+- 검색하는 searchString이 문자열 내에 없을 때는 -1을 반환
+
+String 문자열 치환
+- replace(searchValue, replaceValue) : 문자열 내 searchValue를 replaceValue로 치환
+
+String 화이트 스페이스(공백, 개행문자, 탭문자) 제거
+- trim() : 문자열의 시작과 끝의 빈 문자 제거
+
+Boolean 과 ==, ===
+- Boolean : 논리값, true / false를 다루기 위한 데이터 타입
+- == : 타입과 상관없이 값을 비교 (Equal Operator)
+- === : 값과 함께 타입도 함께 비교 (Strict Equal Oprator)
+
+null 과 nudefined
+JavaScript는 값이 없음을 나타내는 null과 초기화(선언)되지 않은 경우를 나타내는 undefined라는 특별한 데이터 타입이 있음
+- null : 개발자가 의도적으로 빈 값을 할당한 경우
+- undefined : 할당 자체가 이루어지지 않은 것
+
+조건문
+if ~else if ~ else
+- 타 언어와 마찬가지로 조건 분기를 위한 if ~ else if ~ else 블록을 사용할 수 있다.
+- 문법 구조는 C 계열의 언어 조건문과 유사
+
+switch
+- 타 언어와 마찬가지로 조건 분기를 위한 switch 문을 사용할 수 있다.
+
+
+반복문
+- 반복을 위한 for, while, do ~while 문도 C 계열 언어와 거의 유사
+
+연습문제
+1. 2단~9단까지 구구단 출력
+
+2. 아래와 같이 출력하는 프로그램을 만들어 보자 (for문과 while문 2가지 버전으로 작성)
+*****
+****
+***
+**
+*
+
+함수
+- 특정 실행 코드의 묶음을 프로그램 상의 다른 영역에서도 재호출 할 수 있도록 그룹화한 기능 객체
+- 함수의 선언 : 함수 선언식(Function Declaration)
+- 함수도 객체로 간주함 : 함수 표현식(Function Expression)
+- 함수로 전달된 모든 매개변수는 함수 내부에서 arguments 객체로 참조할 수 있다.(가변 인수처럼 활용할 수 있음)
+
+
+
+
